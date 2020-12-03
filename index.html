@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>My slides</title>
+  <style>
+    .container {
+      width: 60%;
+      height: 35rem;
+      margin: 2rem auto;
+      position: relative;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+      height: 100%;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .btn {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      padding: 1rem;
+      background: rgba(0,0,0,0.2);
+      color: #fff;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: rgba(0,0,0,0.8);
+    }
+
+    .next {
+      right: 0;
+      left: auto;
+    }
+
+    .dots {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .dots > span {
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
+      display: inline-block;
+      border-radius: 50%;
+      border: 1px solid #000;
+      text-align: center;
+      margin: 0 5px;
+    }
+
+    .active {
+      background: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="slider container">
+
+    <span class="btn prev" onclick="plusSlide(-1)">&#10094;</span>
+    <span class="btn next" onclick="plusSlide(1)">&#10095;</span>
+
+    <div class="slide">
+      <img src="images/pexels-photo-3787610.jpeg">
+    </div>
+    <div class="slide">
+      <img src="images/pexels-photo-3629227.jpeg">
+    </div>
+    <div class="slide">
+      <img src="images/photo-1551058624-e9390c71d17d.jpeg">
+    </div>
+
+    <div class="dots">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+  </div>
+
+  <script>
+    let slideIndex = 1;
+
+    showSlide (slideIndex);
+
+    function plusSlide (n) {
+      showSlide(slideIndex += n);
+    }
+
+    function showSlide (n) {
+      let slides = document.getElementsByClassName("slide");
+      let dot = document.getElementsByTagName("span");
+      if(n > slides.length){slideIndex = 1};
+      if( n < 1){slideIndex = slides.length};
+      for(let i = 0; i < slides.length; i++){
+        slides[i].style.display = "none";
+        dot[i].classList.remove("active");
+      }
+      slides[slideIndex-1].style.display = "block";
+      dot[slideIndex-1].classList.add("active");
+    }
+  </script>
+
+</body>
+</html>
