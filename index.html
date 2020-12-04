@@ -97,6 +97,7 @@
 
     showSlide (slideIndex);
 
+
     function plusSlide (n) {
       showSlide(slideIndex += n);
     }
@@ -106,6 +107,7 @@
     }
 
     function showSlide (n) {
+
       let slides = document.getElementsByClassName("slide");
       let dot = document.getElementsByClassName("dot");
       if(n > slides.length){slideIndex = 1};
@@ -118,7 +120,9 @@
       slides[slideIndex-1].style.display = "block";
       dot[slideIndex-1].classList.add("active");
       dot[slideIndex-1].style.transform = "scale(1.5)";
-      setTimeout(showSlide(slideIndex++),2000);
+      setTimeout(() => {
+        showSlide(slideIndex > 2 ? slideIndex = 1 : slideIndex++);
+      },5000);
     }
   </script>
 
